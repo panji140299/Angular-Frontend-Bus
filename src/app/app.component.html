@@ -1,8 +1,10 @@
 <div id="app">
   <nav class="navbar navbar-expand navbar-light bg-light">
-    <a href="#" class="navbar-brand">Bus Reservation</a>
+    <img src="assets/images/logo1.png" href="#" class="navbar-brand" width="120" height="50">
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="home">Home</a>
+      </li>
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
       </li>
