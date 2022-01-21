@@ -1,3 +1,4 @@
+<h1>Register Agency</h1>
 <div class="col-md-12">
   <div class="card card-container">
     
@@ -62,6 +63,14 @@
             name must be at least 6 characters
           </div>
         </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Owner</label>
+        <select  name="owner" class="form-control" [(ngModel)]="form.owner"  >
+          <option [value]="user.id" *ngFor="let user of userList" >
+              {{user.firstname}} {{user.lastname}}
+          </option>
+      </select>
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block">Register Agency</button>

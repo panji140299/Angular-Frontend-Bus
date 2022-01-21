@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -7,17 +8,37 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./board-user.component.css']
 })
 export class BoardUserComponent implements OnInit {
-  content?: string;
+  form: any = {
+    code: null,
+    capacity: null,
+    make: null,
+    agency: null
+  };
+  agencyList: any;
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
-  constructor(private userService: UserService) { }
+  constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getUserBoard().subscribe(
+    this.userService.getAgency().subscribe((data:any)=>{
+      this.agencyList=data;
+    })
+  }
+
+  onSubmit(): void {
+    const { code,  capacity, make, agency } = this.form;
+
+    this.authService.addBus(code, capacity, make,agency).subscribe(
       data => {
-        this.content = data;
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
       },
       err => {
-        this.content = JSON.parse(err.error).message;
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
       }
     );
   }

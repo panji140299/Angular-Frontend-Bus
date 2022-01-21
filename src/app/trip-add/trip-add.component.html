@@ -1,1 +1,95 @@
-<p>trip-add works!</p>
+<h1>Add Trip</h1>
+<div class="col-md-12">
+    <div class="card card-container">
+      
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="fare">Fare</label>
+          <input
+            type="number"
+            class="form-control"
+            name="fare"
+            [(ngModel)]="form.fare"
+            minlength="3"
+            required
+            fare
+            #fare="ngModel"
+          />
+          <div class="alert-danger" *ngIf="fare.errors && f.submitted">
+            <div *ngIf="fare.errors.requirsed">fare is required</div>
+            <div *ngIf="fare.errors.fare">
+              fare must be a valid fare address
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="journeyTime">Journey Time</label>
+          <input
+            type="date"
+            class="form-control"
+            name="journeyTime"
+            [(ngModel)]="form.journeyTime"
+            required
+            minlength="6"
+            #journeyTime="ngModel"
+          />
+          <div class="alert-danger" *ngIf="journeyTime.errors && f.submitted">
+            <div *ngIf="journeyTime.errors.required">journeyTime is required</div>
+            <div *ngIf="journeyTime.errors.minlength">
+              journeyTime must be at least 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">Agency</label>
+          <select  name="agency" class="form-control" [(ngModel)]="form.agency">
+            <option [value]="agency.id" *ngFor="let agency of agencyList">
+                {{agency.name}} ({{agency.code}})
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Bus</label>
+            <select  name="bus" class="form-control" [(ngModel)]="form.bus">
+              <option [value]="bus.id" *ngFor="let bus of busList">
+                  {{bus.code}}
+              </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Destination Stop</label>
+            <select  name="deststop" class="form-control" [(ngModel)]="form.deststop">
+              <option [value]="deststop.id" *ngFor="let deststop of deststop">
+                 {{deststop.name}} ({{deststop.code}})
+              </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Source Stop</label>
+            <select  name="sourcestop" class="form-control" [(ngModel)]="form.sourcestop" >
+              <option [value]="sourcestop.id" *ngFor="let sourcestop of sourcestop">
+                 {{sourcestop.name}} ({{sourcestop.code}})
+              </option>
+            </select>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Tambah Trip</button>
+        
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
+    </div>
+  </div>

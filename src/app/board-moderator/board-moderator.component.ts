@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-board-moderator',
@@ -10,21 +11,26 @@ export class BoardModeratorComponent implements OnInit {
   form: any = {
     code: null,
     details: null,
-    name: null,id: null
+    name: null,
+    owner: null
   };
+  userList: any;
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getUser().subscribe((data:any)=>{
+      this.userList=data;
+    })
   }
 
   onSubmit(): void {
-    const { code, details, name, id } = this.form;
+    const { code, details, name, owner } = this.form;
 
-    this.authService.registerAgency(code, details, name,id).subscribe(
+    this.authService.registerAgency(code, details, name,owner).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

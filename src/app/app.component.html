@@ -9,8 +9,11 @@
       <li class="nav-item" *ngIf="showRegisterAgency">
         <a href="/agency" class="nav-link" routerLink="agency">Register Agency</a>
       </li>
-      <li class="nav-item">
-        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
+      <li class="nav-item" *ngIf="showAddBus">
+        <a href="/bus" class="nav-link" routerLink="bus">Add Bus</a>
+      </li>
+      <li class="nav-item" *ngIf="showAddTrip">
+        <a href="/tambahTrip" class="nav-link" routerLink="tambahTrip">Add Trip</a>
       </li>
       <li class="nav-item">
         <a href="/trip-schedule" class="nav-link" routerLink="trip-schedule">Trip Schedule</a>

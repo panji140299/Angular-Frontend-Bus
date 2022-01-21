@@ -1,5 +1,91 @@
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+<h1>Add Bus</h1>
+<div class="col-md-12">
+  <div class="card card-container">
+    
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input
+          type="text"
+          class="form-control"
+          name="code"
+          [(ngModel)]="form.code"
+          minlength="3"
+          required
+          code
+          #code="ngModel"
+        />
+        <div class="alert-danger" *ngIf="code.errors && f.submitted">
+          <div *ngIf="code.errors.requirsed">code is required</div>
+          <div *ngIf="code.errors.code">
+            code must be a valid code address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="capacity">Capacity</label>
+        <input
+          type="number"
+          class="form-control"
+          name="capacity"
+          [(ngModel)]="form.capacity"
+          required
+          minlength="6"
+          #capacity="ngModel"
+        />
+        <div class="alert-danger" *ngIf="capacity.errors && f.submitted">
+          <div *ngIf="capacity.errors.required">capacity is required</div>
+          <div *ngIf="capacity.errors.minlength">
+            capacity must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Make</label>
+        <input
+          type="number"
+          class="form-control"
+          name="make"
+          [(ngModel)]="form.make"
+          required
+          minlength="4"
+          maxlength="4"
+          placeholder="2012"
+          #make="ngModel"
+        />
+        <div class="alert-danger" *ngIf="make.errors && f.submitted">
+          <div *ngIf="make.errors.required">make is required</div>
+          <div *ngIf="make.errors.minlength">
+            make must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Agency</label>
+        <select  name="agency" class="form-control" [(ngModel)]="form.agency" >
+          <option [value]="agency.id" *ngFor="let agency of agencyList">
+              {{agency.name}} ({{agency.code}})
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Tambah Bus</button>
+      
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+  </div>
 </div>
