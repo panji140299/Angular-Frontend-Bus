@@ -1,0 +1,31 @@
+<h1 class="h1 mb-3">Trip By Stop</h1>
+<div class="container">
+<form name="form" *ngIf="!isSuccessful" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+<label class="col-sm-2">
+    Source Stop
+</label>
+<div class="col-sm-10">
+    <select  name="sourceStop" class="form-control">
+        <option>--Select--</option>
+        <option [value]="source.id" *ngFor="let source of stopList">
+            {{source.name}} ({{source.code}})
+        </option>
+    </select>
+</div>
+<label class="col-sm-2">
+    Destination Stop
+</label>
+<div class="col-sm-10">
+    <select  name="destStop" class="form-control">
+        <option>--Select--</option>
+        <option [value]="dest.id" *ngFor="let dest of stopList">
+            {{dest.name}} ({{dest.code}})
+        </option>
+    </select>
+</div>
+<p></p>
+<div class="form-group">
+    <button class="btn btn-primary">Search</button>
+</div>
+</form>
+</div>

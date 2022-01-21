@@ -1,0 +1,27 @@
+<h1>Trip Schedule</h1>
+
+<div class="row">
+    <div class="col-sm-3" *ngFor="let tripschedule of tripSchedule">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">ID : {{tripschedule.id}}</h5>
+                <p class="card-text">{{tripschedule.sourcestop}}</p>
+                <p class="card-text">{{tripschedule.deststop}}</p>
+                <p class="card-text">Trip Date : {{tripschedule.tripDate}}</p>
+                <p class="card-text">Available Seat : {{tripschedule.availableSeat}}</p>
+                <p class="card-text">Ticket Sold : {{tripschedule.ticketSold}}</p>
+                <p class="card-text">{{tripschedule.trip_id}}</p>
+                <p class="card-text">{{tripschedule.agency_id}}</p>
+                <p class="card-text">Trip Detail : {{tripschedule.tripDetail}}</p>
+                <a href="#" class="btn btn-success">Booking</a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+    
+    <a href="tripByStop" class="btn btn-warning" >Trip By Stop</a>
+    <p></p>
+    <a href="tambahTrip" class="btn btn-primary" *ngIf="TambahTrip">Tambah Trip</a>
+    <p></p>
+    <a href="tambahTripSchedule" class="btn btn-primary" *ngIf="TambahTripSchedule">Tambah Trip Schedule</a>

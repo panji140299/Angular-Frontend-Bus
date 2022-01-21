@@ -1,0 +1,17 @@
+<h1>Stop</h1>
+
+<div class="row">
+    <div class="col-sm-3" *ngFor="let stop of stops">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">ID : {{stop.id}}</h5>
+                <p class="card-text"> Fare : {{stop.fare}}</p>
+                <p class="card-text">Stop Code : {{stop.code}}</p>
+                <p class="card-text">Stop Name : {{stop.name}}</p>
+                <p class="card-text">Stop Detail : {{stop.detail}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="tambahStop" class="btn btn-primary" *ngIf="TambahStop">Tambah Stop</a>
+

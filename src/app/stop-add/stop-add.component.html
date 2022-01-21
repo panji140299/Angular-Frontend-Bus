@@ -1,0 +1,99 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+    <div class="form-group">
+        <label for="fare">Fare</label>
+        <input
+          type="text"
+          class="form-control"
+          name="fare"
+          [(ngModel)]="form.fare"
+          minlength="3"
+          required
+          fare
+          #fare="ngModel"
+        />
+        <div class="alert-danger" *ngIf="fare.errors && f.submitted">
+          <div *ngIf="fare.errors.requirsed">fare is required</div>
+          <div *ngIf="fare.errors.fare">
+            fare must be a valid fare address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input
+          type="text"
+          class="form-control"
+          name="code"
+          [(ngModel)]="form.code"
+          minlength="3"
+          required
+          code
+          #code="ngModel"
+        />
+        <div class="alert-danger" *ngIf="code.errors && f.submitted">
+          <div *ngIf="code.errors.requirsed">code is required</div>
+          <div *ngIf="code.errors.code">
+            code must be a valid code address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="detail">Detail</label>
+        <input
+          type="text"
+          class="form-control"
+          name="detail"
+          [(ngModel)]="form.detail"
+          required
+          minlength="6"
+          #detail="ngModel"
+        />
+        <div class="alert-danger" *ngIf="detail.errors && f.submitted">
+          <div *ngIf="detail.errors.required">detail is required</div>
+          <div *ngIf="detail.errors.minlength">
+            detail must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          minlength="1"
+          #name="ngModel"
+        />
+        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+          <div *ngIf="name.errors.required">name is required</div>
+          <div *ngIf="name.errors.minlength">
+            name must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Register Agency</button>
+      
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+  </div>
+</div>
