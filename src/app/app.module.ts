@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,10 @@ import { StopAddComponent } from './stop-add/stop-add.component';
 import { TripAddComponent } from './trip-add/trip-add.component';
 import { TripScheduleAddComponent } from './trip-schedule-add/trip-schedule-add.component';
 import { TripByStopComponent } from './trip-by-stop/trip-by-stop.component';
+import { BusComponent } from './bus/bus.component';
+import { TripComponent } from './trip/trip.component';
+import { AgencyComponent } from './agency/agency.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +42,18 @@ import { TripByStopComponent } from './trip-by-stop/trip-by-stop.component';
     StopAddComponent,
     TripAddComponent,
     TripScheduleAddComponent,
-    TripByStopComponent
+    TripByStopComponent,
+    BusComponent,
+    TripComponent,
+    AgencyComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

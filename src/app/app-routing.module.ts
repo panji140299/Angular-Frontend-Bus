@@ -14,12 +14,17 @@ import { StopAddComponent } from './stop-add/stop-add.component';
 import { TripAddComponent } from './trip-add/trip-add.component';
 import { TripScheduleAddComponent } from './trip-schedule-add/trip-schedule-add.component';
 import { TripByStopComponent } from './trip-by-stop/trip-by-stop.component';
+import { BusComponent } from './bus/bus.component';
+import { TripComponent } from './trip/trip.component';
+import { AgencyComponent } from './agency/agency.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
+  { path: 'editprofile/:id', component: EditProfileComponent },
   { path: 'bus', component: BoardUserComponent },
   { path: 'agency', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
@@ -29,6 +34,9 @@ const routes: Routes = [
   { path: 'tambahTrip', component: TripAddComponent},
   { path: 'tambahTripSchedule', component: TripScheduleAddComponent},
   { path: 'tripByStop', component: TripByStopComponent},
+  { path: 'busList', component: BusComponent},
+  { path: 'tripList', component:TripComponent},
+  { path: 'agencyList', component:AgencyComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

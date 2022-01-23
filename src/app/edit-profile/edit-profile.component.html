@@ -1,0 +1,99 @@
+<div class="card col-md-6 offset-md-3">
+    <div class="card-body">
+        <form class="form-new-profile" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <h3 class="h3 mb-3 font-weight-normal text-center">Update Product</h3>
+            <div class="form-group mt-3">
+                <label>Email</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    formControlName="email"
+                    placeholder="Enter email"
+                    required
+                    [(ngModel)]="profile.email"
+                />
+                <span
+                    style="color: red"
+                    *ngIf="email && email.touched && email.invalid"
+                >
+                   email is Required
+                </span>
+            </div>
+            <div class="form-group mt-3">
+                <label>First Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="firstname"
+                    placeholder="Enter First Name"
+                    required
+                    [(ngModel)]="profile.firstname"
+                />
+                <span
+                    style="color: red"
+                    *ngIf="firstname && firstname.touched && firstname.invalid"
+                >
+                    profile firstname is Required
+                </span>
+            </div>
+            <div class="form-group mt-3">
+                <label>Last Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="lastname"
+                    placeholder="Enter Last Name"
+                    required
+                    [(ngModel)]="profile.lastname"
+                />
+                <span
+                    style="color: red"
+                    *ngIf="lastname && lastname.touched && lastname.invalid"
+                >
+                    profile lastname is Required
+                </span>
+            </div>
+            <div class="form-group mt-3">
+                <label>Mobile Number</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    formControlName="mobilenumber"
+                    placeholder="Enter Mobile Number"
+                    required
+                    minlength="6"
+                    [(ngModel)]="profile.mobilenumber"
+                />
+                <span
+                    style="color: red"
+                    *ngIf="mobilenumber && mobilenumber.touched && mobilenumber.invalid"
+                >
+                    profile mobilenumber is Required
+                </span>
+            </div>
+            <div class="form-group mt-3">
+                <label>Password</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    formControlName="password"
+                    placeholder="Enter Password"
+                    required
+                    minlength="6"
+                    [(ngModel)]="profile.password"
+                />
+                <span
+                    style="color: red"
+                    *ngIf="password && password.touched && password.invalid"
+                >
+                    profile password is Required
+                </span>
+            </div>
+
+            <div class="text-center mt-3">
+                <button class="btn btn-primary">Submit</button>
+                <a [routerLink]="['/profile', profile.id]" class="btn btn-warning">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

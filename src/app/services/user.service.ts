@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TripSchedule } from '../trip-schedule/tripSchedule';
 import { Stops } from '../stops/stops';
@@ -7,6 +7,10 @@ import { TripByStop } from '../trip-by-stop/tripbystop';
 import { User } from '../User';
 import { Agency } from '../Agency';
 import { Bus } from '../board-user/bus';
+import { Trip } from '../trip-add/trip';
+import { catchError, map } from 'rxjs/operators'
+import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 const API_URL = 'http://localhost:8080/api';
 const httpOptions = {
@@ -16,9 +20,21 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
-  
-  constructor(private http: HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
+  constructor(private http: HttpClient, private router: Router) { }
 
+  handleError(error: HttpErrorResponse){
+    let msg = '';
+    if(error.error instanceof ErrorEvent){
+      msg = error.error.message
+    } else {
+      msg = `Error Code: ${error.status}\nMessage: ${error.message}`
+    }
+    return throwError(msg);
+  }
+  
   getUserBoard(): Observable<any> {
     return this.http.get(API_URL + '/v1/user', { responseType: 'text' });
   }
@@ -45,6 +61,30 @@ export class UserService {
   getAgency () : Observable<Array<Agency>>{
       return this.http.get<Array<Agency>>(API_URL + '/v1/reservation/agency');
     }
+  getTrip () : Observable<Array<Trip>>{
+      return this.http.get<Array<Trip>>(API_URL + '/v1/reservation/trip');
+    }
+  getUserProfile(id:number){
+    let api = `${API_URL}/user/profile/${id}`
+     return this.http
+              .get(api, this.httpOptions)
+              .pipe(
+                map((res:any)=> res || {}),
+                catchError(this.handleError)
+        )
+    
+  }
+  updateProfile(id: number, profile: User){
+    let api = `${API_URL}/user/update/${id}`
+    return this.http
+             .put(api, profile, this.httpOptions)
+             .pipe(
+               catchError(this.handleError)
+             )
+             .subscribe((res:any)=>{
+               this.router.navigate([`profile/${id}`])
+             })
+  }
     
   getTribyStop(sourceStop:number, destStop:number) : Observable<any>{
     return this.http.get(API_URL + '/v1/reservation/tripsbystops', {

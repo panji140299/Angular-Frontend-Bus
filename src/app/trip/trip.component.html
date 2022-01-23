@@ -1,0 +1,16 @@
+<h1>Trip</h1>
+
+<div class="row">
+    <div class="col-sm-3" *ngFor="let trip of tripList">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Journey Time : {{trip.journeyTime}}</h5>
+                <p class="card-text">Bus : {{trip.bus}}</p>
+                <p class="card-text">Agency : {{trip.agency}}</p>
+                <p class="card-text">Source Stop : {{trip.sourcestop}}</p>
+                <p class="card-text">Destination Stop : {{trip.deststop}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+

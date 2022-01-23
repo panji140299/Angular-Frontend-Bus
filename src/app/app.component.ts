@@ -15,6 +15,7 @@ export class AppComponent {
   showAddBus = false;
   showAddTrip = false;
   email?: string;
+  id?: number;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -33,6 +34,7 @@ export class AppComponent {
       this.showModeratorBoard = this.roles.includes('AGENCY');
 
       this.email = user.email;
+      this.id = user.id;
     }
   }
 
