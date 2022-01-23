@@ -27,10 +27,10 @@ export class TripAddComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getAgency().subscribe((data:any)=>{
+    this.userService.getAgencyAll().subscribe((data:any)=>{
       this.agencyList=data;
     })
-    this.userService.getBus().subscribe((data:any)=>{
+    this.userService.getBusAll().subscribe((data:any)=>{
       this.busList=data;
     })
     this.userService.getStops().subscribe((data:any)=>{

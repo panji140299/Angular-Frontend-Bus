@@ -22,7 +22,7 @@ export class BoardUserComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getAgency().subscribe((data:any)=>{
+    this.userService.getAgencyAll().subscribe((data:any)=>{
       this.agencyList=data;
     })
   }

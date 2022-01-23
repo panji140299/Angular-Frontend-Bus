@@ -61,6 +61,12 @@ export class UserService {
   getAgency () : Observable<Array<Agency>>{
       return this.http.get<Array<Agency>>(API_URL + '/v1/reservation/agency');
     }
+    getBusAll () : Observable<Array<Bus>>{
+      return this.http.get<Array<Bus>>(API_URL + '/v1/reservation/getbus');
+    }
+    getAgencyAll () : Observable<Array<Agency>>{
+      return this.http.get<Array<Agency>>(API_URL + '/v1/reservation/getagency');
+    }
   getTrip () : Observable<Array<Trip>>{
       return this.http.get<Array<Trip>>(API_URL + '/v1/reservation/trip');
     }
