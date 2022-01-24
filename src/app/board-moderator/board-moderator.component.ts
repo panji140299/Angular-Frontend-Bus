@@ -22,7 +22,7 @@ export class BoardModeratorComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe((data:any)=>{
+    this.userService.getByRole().subscribe((data:any)=>{
       this.userList=data;
     })
   }

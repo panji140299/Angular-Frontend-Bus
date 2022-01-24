@@ -70,6 +70,9 @@ export class UserService {
   getTrip () : Observable<Array<Trip>>{
       return this.http.get<Array<Trip>>(API_URL + '/v1/reservation/trip');
     }
+  getByRole () : Observable<Array<User>>{
+    return this.http.get<Array<User>>(API_URL+ '/v1/reservation/byrole?roleId=3');
+  }
   getUserProfile(id:number){
     let api = `${API_URL}/user/profile/${id}`
      return this.http
