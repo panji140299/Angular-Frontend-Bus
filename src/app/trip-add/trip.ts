@@ -1,8 +1,9 @@
 export interface Trip{
     fare: number;
     journeyTime: string;
-    agency: number;
-    sourcestop: number;
-    deststop: number;
-    bus: number;
+    agency: any;
+    sourcestop: any;
+    deststop: any;
+    bus: any;
+    
 }
