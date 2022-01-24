@@ -18,38 +18,45 @@
         <a href="/tambahTrip" class="nav-link" routerLink="tambahTrip">Add Trip</a>
       </li>
       <li class="nav-item">
-        <a href="/tripList" class="nav-link" routerLink="tripList">Trip List</a>
+        <div class="dropdown">
+          <button class="dropbtn">Show List</button>
+          <div class="dropdown-content">
+            <a href="/busList" class="nav-link" routerLink="busList">Bus List</a>
+            <a href="/agencyList" class="nav-link" routerLink="agencyList">Agency List</a>
+            <a href="/tripList" class="nav-link" routerLink="tripList">Trip List</a>
+          </div>
+        </div>
       </li>
-      <li class="nav-item">
-        <a href="/busList" class="nav-link" routerLink="busList">Bus List</a>
-      </li>
-      <li class="nav-item">
-        <a href="/agencyList" class="nav-link" routerLink="agencyList">Agency List</a>
-      </li>
+     
     </ul>
     <ul class="navbar-nav ml-auto">
       </ul>
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
+        <div class="dropdown">
+          <i class="bi bi-person-circle"></i>
+          <button class="dropbtn">Akun</button>
+          <div class="dropdown-content">
+            <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+            <a href="/login" class="nav-link" routerLink="login">Login</a>
+          </div>
+        </div>
       </li>
     </ul>
+    
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
         <a href="/profile" class="nav-link" [routerLink]="['profile/',id]">{{ email }}</a>
       </li>
       <li class="nav-item" > 
-        <a class="nav-link" aria-current="page" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a> 
+        <a class="nav-link" type="button" aria-current="page" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a> 
         <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" 
           aria-hidden="true"> 
           <div class="modal-dialog"> 
             <div class="modal-content"> 
               <div class="modal-header"> 
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> 
+                <h5 class="modal-title" id="exampleModalLabel">Logout</h5> 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
               </div> 
               <div class="modal-body"> 
@@ -66,12 +73,12 @@
     </ul>
   </nav>
   <!-- Modal -->
-
+  
 
   <div class="container">
     <router-outlet></router-outlet>
   </div>
-  <footer class="container text-center" >
-    <a class="mt-3 text-muted text-center" href="home/">&copy;PANPRAZ 2022</a>
-  </footer>
+  <div class="footer">
+    <p class="mt-3 text-muted" href="home/">&copy;PANPRAZ 2022</p>
+  </div>
 </div>
