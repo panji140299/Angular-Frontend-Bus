@@ -1,5 +1,5 @@
 <div id="app">
-  <nav class="navbar navbar-expand navbar-light bg-light">
+  <nav class="navbar navbar-expand navbar-light bg-white">
     <img src="assets/images/logo1.png" href="#" class="navbar-brand" width="120" height="50">
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
@@ -42,13 +42,36 @@
       <li class="nav-item">
         <a href="/profile" class="nav-link" [routerLink]="['profile/',id]">{{ email }}</a>
       </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
+      <li class="nav-item" > 
+        <a class="nav-link" aria-current="page" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a> 
+        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" 
+          aria-hidden="true"> 
+          <div class="modal-dialog"> 
+            <div class="modal-content"> 
+              <div class="modal-header"> 
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> 
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+              </div> 
+              <div class="modal-body"> 
+                <p>Apakah anda yakin?</p>
+              </div> 
+              <div class="modal-footer"> 
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+                <button type="button" class="btn btn-danger" (click)="logout()">Logout</button> 
+              </div> 
+            </div> 
+          </div> 
+        </div> 
       </li>
     </ul>
   </nav>
+  <!-- Modal -->
+
 
   <div class="container">
     <router-outlet></router-outlet>
   </div>
+  <footer class="container text-center" >
+    <a class="mt-3 text-muted text-center" href="home/">&copy;PANPRAZ 2022</a>
+  </footer>
 </div>
