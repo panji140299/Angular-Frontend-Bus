@@ -22,9 +22,9 @@
           #code="ngModel"
         />
         <div class="alert-danger" *ngIf="code.errors && f.submitted">
-          <div *ngIf="code.errors.requirsed">code is required</div>
-          <div *ngIf="code.errors.code">
-            code must be a valid code address
+          <div *ngIf="code.errors.required">code is required</div>
+          <div *ngIf="code.errors.minlength">
+            min. 3 characters
           </div>
         </div>
       </div>
