@@ -1,18 +1,24 @@
 <h1>Trip</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Journey Time</th>
+        <th scope="col">Fare</th>
+        <th scope="col">Agency</th>
+        <th scope="col">Source Stop</th>
+        <th scope="col">Destination Stop</th>
+        <th scope="col">Bus</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let trip of tripList">
+        <th scope="row">{{trip.journeyTime}}</th>
+        <td>{{trip.fare}}</td>
+        <td>{{trip.agency}}</td>
+        <td>{{trip.sourcestop}}</td>
+        <td>{{trip.deststop}}</td>
+        <td>{{trip.bus}}</td>
 
-<div class="row">
-    <div class="col-sm-3" *ngFor="let trip of tripList">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Journey Time : {{trip.journeyTime}}</h5>
-                <p class="card-text">Fare : {{trip.fare}}</p>
-                <p class="card-text">Agency : {{trip.agency}}</p>
-                <p class="card-text">Source Stop : {{trip.sourcestop}}</p>
-                <p class="card-text">Destination Stop : {{trip.deststop}}</p>
-                <p class="card-text">Bus : {{trip.bus}}</p>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
+      </tr>
+    </tbody>
+  </table>

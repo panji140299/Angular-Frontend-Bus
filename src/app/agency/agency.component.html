@@ -1,15 +1,19 @@
 <h1>Agency</h1>
-
-<div class="row">
-    <div class="col-sm-3" *ngFor="let agency of agencyList">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">CODE : {{agency.code}}</h5>
-                <p class="card-text">Name : {{agency.name}}</p>
-                <p class="card-text">Details : {{agency.details}}</p>
-                <p class="card-text">Owner : {{agency.owner}}</p>
-            </div>
-        </div>
-    </div>
-</div>
-
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Details</th>
+        <th scope="col">Owner</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let agency of agencyList">
+        <th scope="row">{{agency.code}}</th>
+        <td>{{agency.name}}</td>
+        <td>{{agency.details}}</td>
+        <td>{{agency.owner}}</td>
+      </tr>
+    </tbody>
+  </table>

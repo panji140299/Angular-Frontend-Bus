@@ -1,15 +1,19 @@
 <h1>Bus</h1>
-
-<div class="row">
-    <div class="col-sm-3" *ngFor="let bus of busList">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">CODE : {{bus.code}}</h5>
-                <p class="card-text">Capacity : {{bus.capacity}}</p>
-                <p class="card-text">Make : {{bus.make}}</p>
-                <p class="card-text">Agency : {{bus.agency}}</p>
-            </div>
-        </div>
-    </div>
-</div>
-
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Capacity</th>
+        <th scope="col">Make</th>
+        <th scope="col">Agency</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let bus of busList">
+        <th scope="row">{{bus.code}}</th>
+        <td>{{bus.capacity}}</td>
+        <td>{{bus.make}}</td>
+        <td>{{bus.agency}}</td>
+      </tr>
+    </tbody>
+  </table>
