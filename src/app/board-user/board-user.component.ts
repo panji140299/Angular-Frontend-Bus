@@ -18,6 +18,7 @@ export class BoardUserComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  
 
   constructor(private authService: AuthService, private userService: UserService) { }
 
@@ -42,4 +43,5 @@ export class BoardUserComponent implements OnInit {
       }
     );
   }
+
 }

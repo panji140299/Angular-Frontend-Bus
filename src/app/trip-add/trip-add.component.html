@@ -48,11 +48,12 @@
         </div>
         <div class="form-group">
           <label for="name">Agency</label>
-          <select  name="agency" class="form-control" [(ngModel)]="form.agency">
+          <select  name="agency" class="form-control" [(ngModel)]="form.agency" #agencyId (change)="showBuses(agencyId.value)">
             <option [value]="agency.id" *ngFor="let agency of agencyList">
                 {{agency.name}} ({{agency.code}})
             </option>
           </select>
+
         </div>
         <div class="form-group">
             <label for="name">Bus</label>
@@ -64,11 +65,13 @@
         </div>
         <div class="form-group">
             <label for="name">Destination Stop</label>
-            <select  name="deststop" class="form-control" [(ngModel)]="form.deststop">
+            <select  name="deststop" class="form-control" [(ngModel)]="form.deststop" #stopid (change)="showStop(stopid.value)">
               <option [value]="deststop.id" *ngFor="let deststop of deststop">
                  {{deststop.name}} ({{deststop.code}})
               </option>
             </select>
+            <br>
+           
         </div>
         <div class="form-group">
             <label for="name">Source Stop</label>

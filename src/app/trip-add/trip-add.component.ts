@@ -23,6 +23,7 @@ export class TripAddComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  modifedtext: any;
 
   constructor(private authService: AuthService, private userService: UserService) { }
 
@@ -30,12 +31,8 @@ export class TripAddComponent implements OnInit {
     this.userService.getAgencyAll().subscribe((data:any)=>{
       this.agencyList=data;
     })
-    this.userService.getBusAll().subscribe((data:any)=>{
-      this.busList=data;
-    })
     this.userService.getStops().subscribe((data:any)=>{
       this.deststop=data
-      this.sourcestop=data
     })
   }
 
@@ -53,5 +50,17 @@ export class TripAddComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+  }
+  showBuses(agencyId:string){
+    return this.userService.getByAgency(parseInt(agencyId))
+    .subscribe((res:any) => {
+      this.busList = res
+    })
+  }
+  showStop(stopid:string){
+    return this.userService.getByStop(parseInt(stopid))
+    .subscribe((res:any) => {
+      this.sourcestop = res
+    })
   }
 }

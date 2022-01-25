@@ -73,6 +73,7 @@ export class UserService {
   getByRole () : Observable<Array<User>>{
     return this.http.get<Array<User>>(API_URL+ '/v1/reservation/byrole?roleId=3');
   }
+   
   getUserProfile(id:number){
     let api = `${API_URL}/user/profile/${id}`
      return this.http
@@ -82,6 +83,24 @@ export class UserService {
                 catchError(this.handleError)
         )
     
+  }
+  getByAgency(id:number){
+    let api = `${API_URL}/v1/reservation/byagency?agencyId=${id}`
+     return this.http
+              .get(api, this.httpOptions)
+              .pipe(
+                map((res:any)=> res || {}),
+                catchError(this.handleError)
+        )
+  }
+  getByStop(id:number){
+    let api = `${API_URL}/v1/reservation/bystop?stopid=${id}`
+     return this.http
+              .get(api, this.httpOptions)
+              .pipe(
+                map((res:any)=> res || {}),
+                catchError(this.handleError)
+        )
   }
   updateProfile(id: number, profile: User){
     let api = `${API_URL}/user/update/${id}`
