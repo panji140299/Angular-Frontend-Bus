@@ -10,6 +10,7 @@ export class AppComponent {
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
+  showOwnerBoard = false;
   showModeratorBoard = false;
   showRegisterAgency = false;
   showAddBus = false;
@@ -27,11 +28,12 @@ export class AppComponent {
       this.roles = user.roles;
 
       this.showAdminBoard = this.roles.includes('ADMIN');
-      this.showRegisterAgency = this.roles.includes('PASSENGER');
+      this.showRegisterAgency = this.roles.includes('OWNER');
       this.showRegisterAgency = this.roles.includes('ADMIN');
+      
       this.showAddBus = this.roles.includes('ADMIN');
       this.showAddTrip = this.roles.includes('ADMIN');
-      this.showModeratorBoard = this.roles.includes('AGENCY');
+      this.showModeratorBoard = this.roles.includes('OWNER');
 
       this.email = user.email;
       this.id = user.id;

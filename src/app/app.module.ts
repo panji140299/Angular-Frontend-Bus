@@ -26,6 +26,7 @@ import { TripComponent } from './trip/trip.component';
 import { AgencyComponent } from './agency/agency.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { BoardOwnerComponent } from './board-owner/board-owner.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     BusComponent,
     TripComponent,
     AgencyComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    BoardOwnerComponent
   ],
   imports: [
     BrowserModule,

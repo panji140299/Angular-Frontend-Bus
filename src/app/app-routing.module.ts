@@ -18,6 +18,7 @@ import { BusComponent } from './bus/bus.component';
 import { TripComponent } from './trip/trip.component';
 import { AgencyComponent } from './agency/agency.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { BoardOwnerComponent } from './board-owner/board-owner.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'busList', component: BusComponent},
   { path: 'tripList', component:TripComponent},
   { path: 'agencyList', component:AgencyComponent},
+  { path: 'owner', component: BoardOwnerComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
