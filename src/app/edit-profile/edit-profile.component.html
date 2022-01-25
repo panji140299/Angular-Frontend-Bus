@@ -1,6 +1,6 @@
 <div class="card col-md-6 offset-md-3">
     <div class="card-body">
-        <form class="form-new-profile" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <form class="form-new-profile" [formGroup]="profileForm" #f="ngForm" (ngSubmit)=" f.form.valid && onSubmit()">
             <h3 class="h3 mb-3 font-weight-normal text-center">Update Profile</h3>
             <div class="form-group mt-3">
                 <label>Email</label>
@@ -9,12 +9,12 @@
                     class="form-control"
                     formControlName="email"
                     placeholder="Enter email"
-                    required
+                    disaled
                     [(ngModel)]="profile.email"
                 />
                 <span
                     style="color: red"
-                    *ngIf="email && email.touched && email.invalid"
+                    *ngIf="email && email.touched && email.invalid && f.submitted"
                 >
                    email is Required
                 </span>
@@ -31,7 +31,7 @@
                 />
                 <span
                     style="color: red"
-                    *ngIf="firstname && firstname.touched && firstname.invalid"
+                    *ngIf="firstname && firstname.touched && firstname.invalid && f.submitted"
                 >
                     profile firstname is Required
                 </span>
@@ -48,7 +48,7 @@
                 />
                 <span
                     style="color: red"
-                    *ngIf="lastname && lastname.touched && lastname.invalid"
+                    *ngIf="lastname && lastname.touched && lastname.invalid && f.submitted"
                 >
                     profile lastname is Required
                 </span>
@@ -66,7 +66,7 @@
                 />
                 <span
                     style="color: red"
-                    *ngIf="mobilenumber && mobilenumber.touched && mobilenumber.invalid"
+                    *ngIf="mobilenumber && mobilenumber.touched && mobilenumber.invalid && f.submitted"
                 >
                     profile mobilenumber is Required
                 </span>
@@ -77,14 +77,14 @@
                     type="password"
                     class="form-control"
                     formControlName="password"
-                    placeholder="Enter Password"
+                    placeholder="Enter Password Baru atau Lama"
                     required
                     minlength="6"
-                    [(ngModel)]="profile.password"
                 />
                 <span
                     style="color: red"
-                    *ngIf="password && password.touched && password.invalid"
+                    
+                    *ngIf="password && password.touched && password.invalid && f.submitted"
                 >
                     profile password is Required
                 </span>

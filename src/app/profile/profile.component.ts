@@ -19,14 +19,19 @@ export class ProfileComponent implements OnInit {
     password: '',
     mobilenumber: ''
   };
+  isLoggedIn= false;
 
   constructor(private token: TokenStorageService, private userService: UserService, private actRoute: ActivatedRoute) {
     this.profile.id = this.actRoute.snapshot.params.id
  
    }
    ngOnInit(): void {
+    this.isLoggedIn = !!this.token.getToken();
+
+    if (this.isLoggedIn) {
     this.currentUser = this.token.getUser();
     this.getProfile()
+  }
   }
 
   getProfile(){

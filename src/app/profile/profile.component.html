@@ -1,8 +1,8 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
+<div class="container" *ngIf="isLoggedIn" >
 
   <header class="jumbotron">
     <h3>
-      <strong>{{ currentUser.email }}</strong> Profile
+      <strong>{{ profile.email }}</strong> Profile
     </h3>
   </header>
   <!-- <p>
@@ -13,7 +13,7 @@
   <p >
     <strong>Email:</strong>
     <span style="padding-left:110px;">
-    {{ currentUser.email }} 
+    {{ profile.email }} 
   </span>
   </p>
   <p>
