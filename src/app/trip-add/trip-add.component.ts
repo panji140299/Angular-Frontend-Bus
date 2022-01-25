@@ -26,6 +26,8 @@ export class TripAddComponent implements OnInit {
   errorMessage = '';
   modifedtext: any;
   isLoggedIn = false;
+  roles: any;
+  showAddTrip: any;
 
   constructor(private authService: AuthService, private userService: UserService, private tokenStorageService: TokenStorageService) { }
 
@@ -33,6 +35,9 @@ export class TripAddComponent implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
+    const user = this.tokenStorageService.getUser();
+    this.roles = user.roles;
+    this.showAddTrip = this.roles.includes('ADMIN');
       
     this.userService.getAgencyAll().subscribe((data:any)=>{
       this.agencyList=data;

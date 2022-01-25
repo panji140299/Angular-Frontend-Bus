@@ -1,6 +1,6 @@
 <h1>Add Bus</h1>
 <div class="col-md-12" *ngIf="isLoggedIn">
-  <div class="card card-container">
+  <div class="card card-container" *ngIf="showAddBus">
     
     <form
       *ngIf="!isSuccessful"

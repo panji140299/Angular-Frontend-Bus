@@ -20,11 +20,16 @@ export class BoardUserComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   isLoggedIn= false;
+  roles: any;
+  showAddBus: any;
   
 
   constructor(private authService: AuthService, private userService: UserService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    const user = this.tokenStorageService.getUser();
+    this.roles = user.roles;
+    this.showAddBus = this.roles.includes('ADMIN');
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
