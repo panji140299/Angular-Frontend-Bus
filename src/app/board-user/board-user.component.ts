@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { TokenStorageService } from '../services/token-storage.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -18,14 +19,19 @@ export class BoardUserComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  isLoggedIn= false;
   
 
-  constructor(private authService: AuthService, private userService: UserService) { }
+  constructor(private authService: AuthService, private userService: UserService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
     this.userService.getAgencyAll().subscribe((data:any)=>{
       this.agencyList=data;
     })
+  }
   }
 
   onSubmit(): void {
