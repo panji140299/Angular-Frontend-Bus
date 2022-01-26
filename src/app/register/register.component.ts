@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -17,13 +18,15 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  isLoggedIn = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
+    this.isLoggedIn = !!this.tokenStorage.getToken();
     const { email,firstname, lastname, mobilenumber,password } = this.form;
 
     this.authService.register(email, firstname, lastname, mobilenumber, password).subscribe(

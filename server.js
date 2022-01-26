@@ -6,7 +6,7 @@ function requireHTTPS(req,res,next){
   }
   const express = require('express')
   const app = express()
-  app.use(requireHTTPS)
+  // app.use(requireHTTPS)
   app.use(express.static('./dist/angular12-jwt-auth'))
   app.get('/*', (req,res)=>
     res.sendFile('index.html',{root: 'dist/angular12-jwt-auth/'})
