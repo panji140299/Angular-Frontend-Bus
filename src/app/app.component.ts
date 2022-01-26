@@ -42,6 +42,6 @@ export class AppComponent {
 
   logout(): void {
     this.tokenStorageService.signOut();
-    window.location.pathname="loging";
+    window.location.pathname="login";
   }
 }

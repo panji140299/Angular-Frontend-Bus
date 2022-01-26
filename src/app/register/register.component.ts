@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.isLoggedIn = !!this.tokenStorage.getToken();
+    
     const { email,firstname, lastname, mobilenumber,password } = this.form;
 
     this.authService.register(email, firstname, lastname, mobilenumber, password).subscribe(
