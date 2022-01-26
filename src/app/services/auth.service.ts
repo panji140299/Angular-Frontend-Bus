@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'http://localhost:8080/api';
+const AUTH_API = 'https://panjitransportation.herokuapp.com/api';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -46,13 +46,13 @@ export class AuthService {
       agency
     }, httpOptions); 
   }
-  addTrip(fare:number, journeyTime:string, agency: number, sourcestop: number,deststop:number, bus:number): Observable<any>{
+  addTrip(fare:number, journeyTime:string, agency: number, deststop: number,sourcestop:number, bus:number): Observable<any>{
     return this.http.post(AUTH_API + '/v1/reservation/trip-add', {
       fare,
       journeyTime,
       agency,
-      sourcestop,
       deststop,
+      sourcestop,
       bus
     }, httpOptions); 
   }

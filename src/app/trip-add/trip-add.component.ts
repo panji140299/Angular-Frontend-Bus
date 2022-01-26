@@ -49,9 +49,9 @@ export class TripAddComponent implements OnInit {
 }
 
   onSubmit(): void {
-    const { fare, journeyTime, agency, sourcestop, deststop, bus } = this.form;
+    const { fare, journeyTime, agency, deststop, sourcestop, bus } = this.form;
 
-    this.authService.addTrip(fare, journeyTime, agency, sourcestop, deststop, bus).subscribe(
+    this.authService.addTrip(fare, journeyTime, agency, deststop, sourcestop, bus).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

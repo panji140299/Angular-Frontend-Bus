@@ -12,7 +12,7 @@ import { catchError, map } from 'rxjs/operators'
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'https://panjitransportation.herokuapp.com/api';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
